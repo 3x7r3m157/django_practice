@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>sessionwords</title>
+        <style media="screen">
+            .red {
+                color: red;
+            }
+            .green {
+                color: green;
+            }
+            .blue {
+                color: blue;
+            }
+            .big {
+                font-size: 34px;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <form class="words" action="process" method="post">
+            {% csrf_token %}
+            Add a word:<input type="text" name="word" value="">
+            <label for="radio1">Red</label>
+            <input type="radio" name="color" value="red">
+            <label for="radio2">Green</label>
+            <input type="radio" name="color" value="green">
+            <label for="radio3">Blue</label>
+            <input type="radio" name="color" value="blue">
+            <label for="checkbox">Make It Big!</label>
+            <input id="checkBox" name="size" type="checkbox" value="box">
+            <input type="submit" name="submit" value="Submit">
+        </form>
+        <form class="flush" action="flush" method="post">
+            {% csrf_token %}
+            <input type="submit" name="submit" value="clear words">
+        </form>
+        {% for v in request.session.data %}
+        <p class="{{v.color}} {{v.size}}">{{v.word}} - {{v.time}}</p>
+        {% endfor %}
+    </body>
+</html>
