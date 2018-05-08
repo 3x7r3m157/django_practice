@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <table>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+          <tr>
+            <td>Monkey</td>
+            <td>$499.00</td>
+            <td>
+                <form class="monkey" action="monkey" method="post">
+                    {% csrf_token %}
+                    <select name="monkey">
+                      <option value="499">1</option>
+                      <option value="998">2</option>
+                      <option value="1497">3</option>
+                      <option value="1996">4</option>
+                    </select>
+                    <input type="submit" name="submit" value="Submit">
+                </form>
+            </td>
+          </tr>
+          <tr>
+            <td>Giraffe</td>
+            <td>$14,999.00</td>
+            <td>
+                <form class="giraffe" action="giraffe" method="post">
+                    {% csrf_token %}
+                    <select name="giraffe">
+                      <option value="14999">1</option>
+                      <option value="29998">2</option>
+                      <option value="44997">3</option>
+                      <option value="59996">4</option>
+                    </select>
+                    <input type="submit" name="submit" value="Submit">
+                </form>
+            </td>
+          </tr>
+          <tr>
+            <td>Elephant</td>
+            <td>$29,999.00</td>
+            <td>
+                <form class="elephant" action="elephant" method="post">
+                    {% csrf_token %}
+                    <select name="elephant">
+                      <option value="29999">1</option>
+                      <option value="59998">2</option>
+                      <option value="89997">3</option>
+                      <option value="119996">4</option>
+                    </select>
+                    <input type="submit" name="submit" value="Submit">
+                </form>
+            </td>
+        </table>
+    </body>
+</html>
