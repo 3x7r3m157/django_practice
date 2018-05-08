@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ninja Gold</title>
+    </head>
+    <body>
+        <form class="ninjas" action="processfarm" method="post">
+            {% csrf_token %}
+            <h3>FARM: EARNS 10-20 GOLD</h3>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+
+        <form class="ninjas" action="processcave" method="post">
+            {% csrf_token %}
+            <h3>CAVE: EARNS 5-10 GOLD</h3>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+
+        <form class="ninjas" action="processhouse" method="post">
+            {% csrf_token %}
+            <h3>HOUSE: EARNS 2-5 GOLD</h3>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+
+        <form class="ninjas" action="processcasino" method="post">
+            {% csrf_token %}
+            <h3>CASINO: EARNS 0-50 GOLD</h3>
+            <input type="submit" name="submit" value="Submit">
+        </form>
+        <p>Gold: {{request.session.total}}</p>
+        <div style="height:120px;width:800px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+            {% for activity in request.session.activitystream %}
+
+                {% if request.session.winorlose == 0 %}
+                <p style="color:red;">{{activity}}</p>
+                {% endif %}
+
+                {% if request.session.winorlose > 0 %}
+                <p style="color:green;">{{activity}}</p>
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </body>
+
+</html>
